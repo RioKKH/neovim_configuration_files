@@ -1,0 +1,39 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_event = 'InsertEnter'
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#if = '''has("python3")'''
+#depends = 'context_filetype.vim'
+#on_event = 'InsertEnter'
+#hook_source = '''
+#  let g:deoplete#enable_at_startup = 1
+#  let g:deoplete#enable_ignore_case = 1
+#  let g:deoplete#enable_smart_case = 1
+#  inoremap <expr><tab> pumvisible() "\<C-n>" :
+#  	\ neosnippet#expandable_or_jumpable() ?
+#	\	"\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+#'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+
+on_i = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+
