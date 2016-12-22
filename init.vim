@@ -61,7 +61,9 @@ set infercase
 set virtualedit=all
 filetype plugin indent on
 syntax enable
-"colorscheme onedark
+let g:airline_theme='one'
+set background=dark
+colorscheme one
 
 
 " -------------------------------------------------------------------

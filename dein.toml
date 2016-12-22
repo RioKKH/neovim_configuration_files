@@ -4,28 +4,10 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-#[[plugins]]
-#repo = 'itchyny/lightline.vim'
-#hook_add = '''
-#  let g:lightline = {
-#  \  'colorscheme': 'wombat'
-#  \}
-#'''
-
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-
-[[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'rakr/vim-one'
 hook_add = '''
-  let g:onedark_termcolors = 16
-  colorscheme onedark
+  let g:airline_theme='one'
+  set background=dark
+  colorscheme one
 '''
-
-[[plugins]]
-repo = 'joshdick/airline-onedark.vim'
-
-
-
-#[[plugins]]
-#repo = 'altercation/vim-colors-solarized'
