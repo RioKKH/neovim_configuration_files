@@ -1,0 +1,78 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+#--------------------------------
+# linter
+#--------------------------------
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/neomake.rc.vim
+'''
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+if = "!has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/syntastic.rc.vim
+'''
+
+#--------------------------------
+# terminal
+#--------------------------------
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+if = "!has('nvim')"
+hook_add = '''
+source ~/.config/nvim/plugins/vimshell.rc.vim
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['tagbar', 'vim-fugitive']
+hook_add = '''
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+'''
+#hook_source = '''
+#source ~/.config/nvim/plugins/airline.rc.vim
+#'''
+#if exists('g:nyaovim_version')
+#  let g:airline_powerline_fonts = 0
+#  let g:airlineleft_sep = ''
+#  let g:airlineright_sep = ''
+#else
+#  let g:airline_powerline_fonts = 1
+#endif
+#let g:airline_powerline_fonts = 1
+#let g:airline#extensions#tabline#enabled = 1
+#if !has('nvim')
+#  let g:airline#extensions#whitespace#mixed_indent_algo = 2
+#endif
+#'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = 'vim-airline'
+hook_add = '''
+let g:airline_theme = 'onedark'
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+if =  "!has('nvim')"
+build = 'make'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
