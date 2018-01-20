@@ -44,9 +44,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-filetype plugin indent on
-syntax enable
-
 runtime! options.rc.vim
 runtime! keymap.rc.vim
 

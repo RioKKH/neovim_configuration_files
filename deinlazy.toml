@@ -10,13 +10,59 @@ hook_source = '''
 source ~/.config/nvim/plugins/deoplete.rc.vim
 '''
 
+#[[plugins]]
+#repo = 'Shougo/neocomplete.vim'
+#depends = 'context_filetype.vim'
+#if = "has('lua')"
+#on_i = 1
+#hook_source = '''
+#source ~/.config/nvim/plugins/neocomplete.rc.vim
+#'''
+
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-depends = 'context_filetype.vim'
-if = "has('lua')"
-on_i = 1
+repo = 'Shougo/neosnippet'
 hook_source = '''
-source ~/.config/nvim/plugins/neocomplete.rc.vim
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+on_i = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+
+#[[plugins]]
+#repo = 'tweekmonster/deoplete-clang2'
+#hook_source = '''
+#let g:deoplete#sources#clang#libclang_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
+#let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+#'''
+#depends = 'deoplete.nvim'
+#on_ft = ['c', 'cpp']
+
+[[plugins]]
+#repo = 'tweekmonster/deoplete-clang2'
+repo = 'zchee/deoplete-clang'
+hook_source = '''
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+'''
+on_ft = ['c','cpp','cmake']
+depends = 'deoplete.nvim'
+#let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang-3.8.so.1'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_i = 1
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'ludovicchabant/vim-gutentags'
+on_ft = ['c', 'cpp']
+hook_source = '''
+let g:gutentags_enabled=1
 '''
 
 [[plugins]]

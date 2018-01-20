@@ -14,4 +14,6 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+tnoremap <silent> <ESC> <C-\><C-n>
 
+nmap <F8> :TagbarToggle<CR>

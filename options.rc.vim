@@ -8,7 +8,12 @@ set shiftround
 set infercase
 set virtualedit=all
 set autoindent
+set mouse=a
 colorscheme onedark
+filetype plugin indent on
+syntax enable
+
+set statusline+=%{gutentags#statusline()}
 
 if has('nvim')
   set clipboard+=unnamedplus
@@ -20,6 +25,8 @@ else
   set wildmenu
   set clipboard=unnamed,autoselect set backspace=indent,eol,start
 endif
+
+nnoremap <C-]> g<C-]>
 
 
 "----------------------------------------------
@@ -47,6 +54,7 @@ let g:loaded_spellfile_plugin    = 1
 let g:loaded_man                 = 1
 let g:loaded_matchit             = 1
 
+let g:deoplete#enable_at_startup = 1
 
 "----------------------------------------------
 " for Lang
@@ -54,6 +62,10 @@ let g:loaded_matchit             = 1
 " for vim script
 autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType vim setlocal dictionary=/usr/local/share/nvim/runtime/syntax/vim/generated.vim
+
+" for shell script
+autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
+autocmd FileType sh setlocal dictionary=/usr/local/share/nvim/runtime/syntax/sh.vim
 
 " for python
 autocmd FileType python setlocal cindent
@@ -68,3 +80,32 @@ highlight link pythonSpecialWord Special
 highlight link pythonDelimiter Special
 
 let b:current_after_syntax = 'python'
+
+" for C, C++
+autocmd FileType c,cpp setlocal cindent
+autocmd FileType c,cpp setlocal smarttab smartindent textwidth=80
+autocmd FileType c setlocal dictionary=/usr/local/share/nvim/runtime/syntax/c.vim
+autocmd FileType cpp setlocal dictionary=/usr/local/share/nvim/runtime/syntax/cpp.vim
+
+"
+"------------------------------------------
+" personal functions
+"
+function! Loadctags()
+  let dirgit7k = '/home/kakehi/work/git/autoeos/src/autoeos7000-src'
+  let dirgit9k = '/home/kakehi/work/git/autoeos/src/autoeos9000-src'
+  let dirgitmb = '/home/kakehi/work/git/autoeos/src/autoeosMB-src'
+  let cwd = getcwd()
+  if cwd =~ dirgitmb
+    set tags+=/home/kakehi/work/tags/autoeosMB_local.ctags
+  elseif cwd =~ dirgit7k
+    set tags+=/home/kakehi/work/tags/autoeos7000.ctags
+  elseif cwd =~ dirgit9k
+    set tags+=/home/kakehi/work/tags/autoeos9000.ctags
+  endif
+endfunction
+
+function! RemoveTrailingWhitespace()
+  " Remove all trailing whitespace
+  :%s/\s\+$//ge
+endfunction
