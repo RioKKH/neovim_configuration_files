@@ -46,5 +46,4 @@ endif
 
 runtime! options.rc.vim
 runtime! keymap.rc.vim
-
-
+runtime! personal.rc.vim
